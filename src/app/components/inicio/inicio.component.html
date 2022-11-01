@@ -1,0 +1,115 @@
+<div class="fondo">
+<p style="font-size: 0.001px;">.</p>
+<div class="container divhora" style="margin-top: 1.5em;">
+    <div class="row">
+        <p class="hora"><u>Hora actual {{hractual|date:'hh:mm:ss a'}}</u></p>
+    </div>
+    <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#ModalAgregar">Agregar Sala</button>
+</div>
+
+
+<!-- Modal para agregar sala -->
+<div class="modal fade" id="ModalAgregar" tabindex="-1" aria-labelledby="ModalAgregar" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="ModalAgregar">Agregar Sala</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h5>¿Desea agregar una sala más?</h5>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-bs-dismiss="modal" (click)="agregarSala()"> Sí
+                </button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"> No </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Div cards de las salas-->
+
+<div *ngIf="ListarSalas.length>0; else nohaysalas" class="container animate__animated animate__backInDown" style="margin-top: 1em;">
+    <div class="row">
+        <div class="col-sm-6" *ngFor="let sala of ListarSalas">
+            <div class="card">
+                <div class="card-body divSala">
+                    <h5 class="card-title h5Salas">Sala Número {{sala.id}}</h5>
+                    <p class="card-text estado"
+                        [ngStyle]="{'background-color':sala.estado === 'reservada' ? '#FB5548' : 'green' }">Estado:
+                        {{sala.estado}}</p>
+                    <p class="card-text">Hora de Inicio - {{sala.hrinicio}}</p>
+                    <p class="card-text">Hora de Fin - {{sala.hrfinal}}</p>
+                    <button class="btn btn-success" data-bs-toggle="modal" [disabled]="sala.estado === 'reservada' " data-bs-target="#ModalReservar"
+                        (click)="obtenerid(sala.id)">Reservar
+                        Sala</button>
+                    <button class="btn btn-danger" (click)="eliminarSala(sala.id)">Eliminar Sala</button>
+                    <button class="btn btn-secondary" [disabled]="sala.estado === 'libre' " (click)="liberarSala(sala.id)">Liberar Sala</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Por si no hay salas que muestre un mensaje diciendo que no hay salas-->
+<ng-template #nohaysalas>
+    <div class="container">
+        <h4 style="color: red; text-align: center; font-size: 3em; margin-top: 2em;">No hay Salas</h4>
+    </div>
+</ng-template>
+
+
+<!-- Modal para reservar salas-->
+<div class="modal fade" id="ModalReservar" tabindex="-1" aria-labelledby="ModalReservar" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="ModalReservar">Introduzca los datos necesarios</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p style="text-align: center;">
+                    <strong>*El tiempo máximo que puede reservar una sala es de 2 horas*</strong>
+                </p>
+
+                <div class="row" style="margin-bottom: 1em;">
+                    <div class="col-sm-3">
+                        <label style="text-align: left;" for="idsala">Sala Número </label>
+                    </div>
+
+                    <div class="col-sm-3">
+                        <input type="text" name="idsala" disabled value="{{this.idSala}}">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-3">
+                        <label style="text-align: left;" for="hrinicio">Hora de inicio </label>
+                    </div>
+                    <div class="col-sm-3">
+                        <input type="time" id="appt" name="hrinicio" min="09:00" max="18:00" required #hrinicio>
+                    </div>
+                </div>
+
+                <br>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <label style="text-align: left;" for="hrfinal">Hora de Fin </label>
+                    </div>
+                    <div class="col-sm-3">
+                        <input type="time" id="appt" name="hrfinal" min="09:00" max="18:00" required #hrfinal>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="submit" class="btn btn-success" data-bs-dismiss="modal" (click)="reservar(hrinicio.value,hrfinal.value);">Reservar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!---->
+
+</div>
