@@ -1,0 +1,58 @@
+.fondo{
+
+    background: url("../../../assets/fondo.jpg") no-repeat center center fixed;
+        background-size: cover;
+        -moz-background-size: cover;
+        -webkit-background-size: cover;
+        -o-background-size: cover;
+}
+
+html{
+    height: 100%;
+}
+
+.divSala{
+    background-image: url("../../../assets/prueba2.jpg");
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;}
+
+.btn{
+    margin-right: 0.5em;
+    border: 0.1em solid black;
+    border-radius: 1em;
+    margin-bottom: 0.2em;
+}
+
+.card{
+    border: 0.15em solid black;
+    border-style: outset ;
+    margin-bottom: 1em;
+}
+
+.h5Salas{
+    text-align: center;
+}
+
+.hora{
+    font-size: 2em;
+    text-align: center;
+    font-weight: bold;
+    
+}
+
+.estado{
+    color: white;
+}
+
+.divhora{
+    background-image: url("../../../assets/prueba2.jpg");
+    border-radius: 1em;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px; 
+}
+
+.container{
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.animate__animated.animate__backInDown{
+    animation-duration: 2s;
+}
