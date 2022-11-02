@@ -30,7 +30,7 @@
 
 <!--Div cards de las salas-->
 
-<div *ngIf="ListarSalas.length>0; else nohaysalas" class="container animate__animated animate__backInDown" style="margin-top: 1em;">
+<div *ngIf="ListarSalas.length>0; else nohaysalas" class="container animate__animated animate__backInDown" style="margin-top: 1em; font-size:1.5em;">
     <div class="row">
         <div class="col-sm-6" *ngFor="let sala of ListarSalas">
             <div class="card">
@@ -61,7 +61,7 @@
 
 
 <!-- Modal para reservar salas-->
-<div class="modal fade" id="ModalReservar" tabindex="-1" aria-labelledby="ModalReservar" aria-hidden="true">
+<div class="modal fade" id="ModalReservar" tabindex="-1" aria-labelledby="ModalReservar" aria-hidden="true" style="font: size 1.5em;">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
