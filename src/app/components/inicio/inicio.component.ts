@@ -47,8 +47,8 @@ export class InicioComponent implements OnInit {
   }
 
   //esta funcion obtiene todas las salas que existan en la base de datos para mostrarlas
-  listarSalas(){
-    this.servicio.getSalas().subscribe(
+ listarSalas(){
+     this.servicio.getSalas().subscribe(
       (resp) => {
         console.log("resp: ",resp);
         this.ListarSalas = <any>resp;
