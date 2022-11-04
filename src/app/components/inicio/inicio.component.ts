@@ -52,7 +52,6 @@ export class InicioComponent implements OnInit {
      (resp) => {
        console.log("resp: ", resp);
        this.ListarSalas= <any>resp['recordset'];
-       console.log("listar salas: "+this.ListarSalas);
        this.contador = this.ListarSalas.length;
      },
      (err) => console.log(err)
