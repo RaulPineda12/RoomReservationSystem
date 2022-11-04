@@ -13,7 +13,7 @@ import { ServicioService, Sala } from '../../services/servicio.service'
 })
 export class InicioComponent implements OnInit {
 
-  ListarSalas: Sala[];
+  ListarSalas: Sala[] = [];
   auxListarSalas: Sala[];
   hractual: Date;
   isDisable = true;
@@ -47,23 +47,22 @@ export class InicioComponent implements OnInit {
   }
 
   //esta funcion obtiene todas las salas que existan en la base de datos para mostrarlas
- listarSalas(){
-     this.servicio.getSalas().subscribe(
-      (resp) => {
-        console.log("resp: ",resp);
-        this.ListarSalas = <any>resp;
-        this.contador=this.ListarSalas.length
-      },
-      (err) => console.log(err)
-    );
+ async listarSalas(){
+    await  this.servicio.getSalas().subscribe(
+     (resp) => {
+       console.log("resp: ", resp);
+       this.ListarSalas= <any>resp['recordset'];
+       console.log("listar salas: "+this.ListarSalas);
+       this.contador = this.ListarSalas.length;
+     },
+     (err) => console.log(err)
+   );
   }
 
   //esta funcion libera la sala cuando el tiempo de la reservacion se cumpla
   verificarHora(){
-
     var x: any
     var auxhractual = moment(this.hractual).format('h:mm a')
-
      for(x=0; x<=this.contador;x++){
        if(this.ListarSalas[x].hrfinal === auxhractual){
          this.liberarSala(this.ListarSalas[x].id)

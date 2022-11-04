@@ -6,9 +6,8 @@ import { HttpClient } from '@angular/common/http'
 })
 export class ServicioService {
 
-  //
-  //url: string = 'http://localhost:3001/';
-  url: string = 'https://roomreservationsystem-raulpineda-backend.azurewebsites.net';
+
+  url: string = 'https://api-roomreservationsystem.azurewebsites.net/';
 
   constructor(private http: HttpClient) { }
 
