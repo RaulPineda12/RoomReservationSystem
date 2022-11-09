@@ -19,8 +19,7 @@ export class InicioComponent implements OnInit {
   isDisable = true;
   idSala: any;
   contador:number;
-  //this.isDisable=false;
-
+  band= false;
 
   sala: Sala={
     hrinicio:'',
@@ -53,6 +52,7 @@ export class InicioComponent implements OnInit {
        console.log("resp: ", resp);
        this.ListarSalas= <any>resp['recordset'];
        this.contador = this.ListarSalas.length;
+       this.band=true;
      },
      (err) => console.log(err)
    );
