@@ -41,8 +41,6 @@ export class InicioComponent implements OnInit {
       this.hractual = new Date();
       this.verificarHora();
     }, 1000);
-
-    
   }
 
   //esta funcion obtiene todas las salas que existan en la base de datos para mostrarlas
