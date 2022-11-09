@@ -19,7 +19,7 @@ export class InicioComponent implements OnInit {
   isDisable = true;
   idSala: any;
   contador:number;
-  band= false;
+  band= true;
 
   sala: Sala={
     hrinicio:'',
@@ -52,7 +52,7 @@ export class InicioComponent implements OnInit {
        console.log("resp: ", resp);
        this.ListarSalas= <any>resp['recordset'];
        this.contador = this.ListarSalas.length;
-       this.band=true;
+       this.band=false;
      },
      (err) => console.log(err)
    );
@@ -62,11 +62,15 @@ export class InicioComponent implements OnInit {
   verificarHora(){
     var x: any
     var auxhractual = moment(this.hractual).format('h:mm a')
-     for(x=0; x<=this.contador;x++){
-       if(this.ListarSalas[x].hrfinal === auxhractual){
-         this.liberarSala(this.ListarSalas[x].id)
-       }
-     }
+    try{
+      for(x=0; x<=this.contador;x++){
+        if(this.ListarSalas[x].hrfinal === auxhractual){
+          this.liberarSala(this.ListarSalas[x].id)
+        }
+      }
+    }catch(ex){
+
+    }
   }
 
   //esta funcion sirve para agregar una sala nueva
