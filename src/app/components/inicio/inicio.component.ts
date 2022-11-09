@@ -52,7 +52,9 @@ export class InicioComponent implements OnInit {
        console.log("resp: ", resp);
        this.ListarSalas= <any>resp['recordset'];
        this.contador = this.ListarSalas.length;
-       this.band=false;
+       if(this.contador >=0 ){
+        this.band=false;
+      }
      },
      (err) => console.log(err)
    );

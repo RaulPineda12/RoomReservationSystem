@@ -33,6 +33,12 @@
         <app-loading></app-loading>
     </div>
 
+    <!--Por si no hay salas que muestre un mensaje diciendo que no hay salas-->
+    <div *ngIf="this.contador == 0" class="container">
+        <h4 style="color: red; text-align: center; font-size: 3em; margin-top: 2em;">No hay Salas</h4>
+    </div>
+
+
     <!--Div cards de las salas-->
     <div *ngIf="ListarSalas.length>0;" class="container animate__animated animate__backInDown"
         style="margin-top: 1em; font-size:1.5em;">
@@ -56,11 +62,6 @@
                 </div>
             </div>
         </div>
-    </div>
-
-    <!--Por si no hay salas que muestre un mensaje diciendo que no hay salas-->
-    <div *ngIf="ListarSalas.length==0 && this.band== false" class="container">
-        <h4 style="color: red; text-align: center; font-size: 3em; margin-top: 2em;">No hay Salas</h4>
     </div>
 
     <!-- Modal para reservar salas-->
